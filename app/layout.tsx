@@ -39,7 +39,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="pt-PT">
-      <body className={`${inter.variable} ${playfair.variable} font-sans antialiased`}>
+      <body suppressHydrationWarning className={`${inter.variable} ${playfair.variable} font-sans antialiased`}>
         <I18nProvider>
           <Header />
           <main>{children}</main>
