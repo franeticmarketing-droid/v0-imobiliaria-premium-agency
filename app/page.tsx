@@ -1,11 +1,14 @@
 import Image from "next/image"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { PropertyCard } from "@/components/property-card"
 import { TestimonialCard } from "@/components/testimonial-card"
 import { GuideCard } from "@/components/guide-card"
 import { StatsBar } from "@/components/stats-bar"
+import { TrustBadges } from "@/components/trust-badges"
+import { SuccessCounters } from "@/components/success-counters"
+import { AdvancedSearch } from "@/components/advanced-search"
+import { FAQList } from "@/components/faq-list"
 import { getFeaturedProperties, guides, testimonials } from "@/lib/data"
 import { Search, ShieldCheck, FileText, TrendingUp, Users, ArrowRight, ChevronRight } from "lucide-react"
 
@@ -86,67 +89,7 @@ export default function HomePage() {
       {/* Quick Search */}
       <section className="relative -mt-16 z-10 mx-auto w-full max-w-5xl px-4 sm:px-6">
         <div className="rounded-lg border bg-card p-6 shadow-lg">
-          <form className="grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
-            <div className="lg:col-span-1">
-              <Select name="location">
-                <SelectTrigger>
-                  <SelectValue placeholder="Localização" />
-                </SelectTrigger>
-                <SelectContent>
-                  <SelectItem value="lisboa">Lisboa</SelectItem>
-                  <SelectItem value="porto">Porto</SelectItem>
-                  <SelectItem value="algarve">Algarve</SelectItem>
-                  <SelectItem value="cascais">Cascais</SelectItem>
-                  <SelectItem value="sintra">Sintra</SelectItem>
-                </SelectContent>
-              </Select>
-            </div>
-            <div className="lg:col-span-1">
-              <Select name="type">
-                <SelectTrigger>
-                  <SelectValue placeholder="Tipo" />
-                </SelectTrigger>
-                <SelectContent>
-                  <SelectItem value="apartamento">Apartamento</SelectItem>
-                  <SelectItem value="moradia">Moradia</SelectItem>
-                  <SelectItem value="terreno">Terreno</SelectItem>
-                  <SelectItem value="predio">Prédio</SelectItem>
-                </SelectContent>
-              </Select>
-            </div>
-            <div className="lg:col-span-1">
-              <Select name="price">
-                <SelectTrigger>
-                  <SelectValue placeholder="Preço máx." />
-                </SelectTrigger>
-                <SelectContent>
-                  <SelectItem value="300000">Até 300.000€</SelectItem>
-                  <SelectItem value="500000">Até 500.000€</SelectItem>
-                  <SelectItem value="750000">Até 750.000€</SelectItem>
-                  <SelectItem value="1000000">Até 1.000.000€</SelectItem>
-                  <SelectItem value="2000000">Até 2.000.000€</SelectItem>
-                </SelectContent>
-              </Select>
-            </div>
-            <div className="lg:col-span-1">
-              <Select name="typology">
-                <SelectTrigger>
-                  <SelectValue placeholder="Tipologia" />
-                </SelectTrigger>
-                <SelectContent>
-                  <SelectItem value="t0">T0</SelectItem>
-                  <SelectItem value="t1">T1</SelectItem>
-                  <SelectItem value="t2">T2</SelectItem>
-                  <SelectItem value="t3">T3</SelectItem>
-                  <SelectItem value="t4">T4+</SelectItem>
-                </SelectContent>
-              </Select>
-            </div>
-            <Button type="submit" className="lg:col-span-1">
-              <Search className="mr-2 h-4 w-4" />
-              Pesquisar
-            </Button>
-          </form>
+          <AdvancedSearch />
         </div>
       </section>
 
@@ -176,6 +119,11 @@ export default function HomePage() {
             <Link href="/imoveis">Ver todos os imóveis</Link>
           </Button>
         </div>
+      </section>
+
+      {/* Trust Badges Section */}
+      <section className="mx-auto w-full max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
+        <TrustBadges />
       </section>
 
       {/* Why Us - Pillars */}
@@ -283,6 +231,14 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* Success Metrics */}
+      <section className="mx-auto w-full max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
+        <h2 className="mb-12 text-center font-serif text-3xl font-semibold tracking-tight text-foreground sm:text-4xl">
+          Os Números que Falam
+        </h2>
+        <SuccessCounters />
+      </section>
+
       {/* Testimonials */}
       <section className="mx-auto w-full max-w-7xl px-4 py-24 sm:px-6 lg:px-8">
         <div className="text-center">
@@ -323,6 +279,11 @@ export default function HomePage() {
             ))}
           </div>
         </div>
+      </section>
+
+      {/* FAQ Section */}
+      <section className="mx-auto w-full max-w-4xl px-4 py-24 sm:px-6 lg:px-8">
+        <FAQList />
       </section>
 
       {/* Final CTA */}

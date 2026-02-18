@@ -3,6 +3,67 @@
 
 @custom-variant dark (&:is(.dark *));
 
+/* Micro-interactions and animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes pulse-glow {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.7;
+  }
+}
+
+:root {
+  --animation-duration-fast: 150ms;
+  --animation-duration-normal: 300ms;
+  --animation-duration-slow: 500ms;
+  --animation-easing: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
 :root {
   /* Premium warm neutral palette */
   --background: oklch(0.98 0.005 60);
@@ -123,5 +184,35 @@
   }
   body {
     @apply bg-background text-foreground;
+  }
+
+  /* Smooth transitions for interactive elements */
+  button,
+  a,
+  input,
+  select,
+  textarea {
+    @apply transition-colors duration-200;
+  }
+
+  /* Utility classes for animations */
+  .animate-fade-in-up {
+    animation: fadeInUp var(--animation-duration-normal) var(--animation-easing) forwards;
+  }
+
+  .animate-slide-in-left {
+    animation: slideInLeft var(--animation-duration-normal) var(--animation-easing) forwards;
+  }
+
+  .animate-slide-in-right {
+    animation: slideInRight var(--animation-duration-normal) var(--animation-easing) forwards;
+  }
+
+  .animate-scale-in {
+    animation: scaleIn var(--animation-duration-normal) var(--animation-easing) forwards;
+  }
+
+  .animate-pulse-glow {
+    animation: pulse-glow 2s var(--animation-easing) infinite;
   }
 }
